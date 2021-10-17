@@ -8,6 +8,12 @@ import {
 } from "react-router-dom"
 import style from "App.module.css"// 以绝对路径的方式导入
 import Nav from "components/Nav"
+import Layout from "components/Layout"
+import { LVAL_TYPES } from "@babel/types"
+import Tags from "views/Tags"
+import Statistics from "views/Statistics"
+import Money from "views/Money"
+import NoMatch from "views/NoMatch"
 
 // import apple from './icons/apple.svg'
 // console.log(apple) // 打印结果：/static/media/apple.f64336d1.svg
@@ -33,44 +39,5 @@ export default function App() {
         </Switch>
       </div>
     </Router>
-  )
-}
-
-function Statistics() {
-  return (
-    <Fragment>
-      <div className={style.content}>
-        <h2>Statistics</h2>
-      </div>
-      <Nav />
-    </Fragment>
-  )
-}
-
-function Tags() {
-  return (
-    <Fragment>
-      <div className={style.content}>
-        <h2>Tags</h2>
-      </div>
-      <Nav />
-    </Fragment>
-  )
-}
-
-function Money() {
-  return (
-    <Fragment>
-      <div className={style.content}>
-        <h2>Money</h2>
-      </div>
-      <Nav />
-    </Fragment>
-  )
-}
-
-function NoMatch() {
-  return (
-    <div>页面不存在，你丫输错地址了吧！</div>
   )
 }
