@@ -8,11 +8,12 @@ import {
 } from "react-router-dom";
 import style from "./App.module.css"
 // 导入icon
-import apple from './icons/apple.svg'
-import shoes from './icons/shoes.svg'
-import sun from './icons/sun.svg'
+require('./icons/apple.svg')
+require('./icons/shoes.svg')
+require('./icons/sun.svg')
 
-console.log(apple) // 打印结果：/static/media/apple.f64336d1.svg
+// import apple from './icons/apple.svg'
+// console.log(apple) // 打印结果：/static/media/apple.f64336d1.svg
 
 
 export default function App() {
@@ -40,15 +41,22 @@ export default function App() {
           <nav>
             <ul>
               <li>
-                <img src={apple}></img>
+                {/* <img src={apple}></img> */}
+                <svg className={style.icon} fill="purple">
+                  <use xlinkHref="#apple"></use>
+                </svg>
                 <Link to="/tags">标签页</Link>
               </li>
               <li>
-                <img src={sun}></img>
+                <svg className={style.icon}>
+                  <use xlinkHref="#shoes"></use>
+                </svg>
                 <Link to="/money">记账页</Link>
               </li>
               <li>
-                <img src={shoes}></img>
+                <svg className={style.icon}>
+                  <use xlinkHref="#sun"></use>
+                </svg>
                 <Link to="/statistics">统计页</Link>
               </li>
             </ul>
