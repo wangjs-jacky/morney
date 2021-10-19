@@ -1,9 +1,14 @@
 import Layout from "components/Layout"
+import Nav from "components/Nav"
+import { Fragment } from "react"
 
 export default () => {
     return (
-        <Layout>
-            <h2>Statistics</h2>
-        </Layout>
+        <Fragment>
+            <Layout>
+                <h2>Statistics</h2>
+            </Layout>
+            <Nav />
+        </Fragment>
     )
 }

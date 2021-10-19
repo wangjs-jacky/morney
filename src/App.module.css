@@ -16,8 +16,9 @@
     text-align: center;
 }
 
-.container .content{
+.content{
     display: flex;
+    flex-direction: column;
     flex:1;
     overflow:auto;
 }
@@ -25,4 +26,12 @@
 .icon{
     width: 24px;
     height: 24px;
+}
+
+.navBar :global(.selected){
+    color: red;                    
+}
+
+.navBar :global(.selected) .icon{
+    fill: red;
 }

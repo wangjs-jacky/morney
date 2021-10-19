@@ -1,15 +1,12 @@
-import React, { Fragment } from "react"
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from "react-router-dom"
 import style from "App.module.css"// 以绝对路径的方式导入
-import Nav from "components/Nav"
-import Layout from "components/Layout"
-import { LVAL_TYPES } from "@babel/types"
+
+// 导入views中的文件
 import Tags from "views/Tags"
 import Statistics from "views/Statistics"
 import Money from "views/Money"

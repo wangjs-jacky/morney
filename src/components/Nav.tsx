@@ -1,33 +1,34 @@
 import Icon from "components/Icon";
 import {
     BrowserRouter as Router,
-    Switch,
-    Route,
     Link,
-    Redirect
+    NavLink,
 } from "react-router-dom";
 import style from "App.module.css"
 
 
-const Nav = (props: any) => {
-    return (
-        <nav className={style.navBar}>
-            <ul >
-                <li>
-                    <Icon name="apple"></Icon>
-                    <Link to="/tags">标签页</Link>
-                </li>
-                <li>
-                    <Icon name="shoes"></Icon>
-                    <Link to="/money">记账页</Link>
-                </li>
-                <li>
+const Nav = (props: any) => (
+    <nav className={style.navBar}>
+        <ul>
+            <li>
+                <NavLink to="/tags" activeClassName="selected">
+                    <Icon name="apple"></Icon>标签页
+                </NavLink>
+            </li>
+            <li>
+
+                <NavLink to="/money" activeClassName="selected">
+                    <Icon name="shoes"></Icon>记账页
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to="/statistics" activeClassName="selected">
                     <Icon name="sun"></Icon>
-                    <Link to="/statistics">统计页</Link>
-                </li>
-            </ul>
-        </nav>
-    )
-}
+                    统计页
+                </NavLink>
+            </li>
+        </ul>
+    </nav>
+)
 
 export default Nav
