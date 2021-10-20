@@ -26,9 +26,15 @@ const _CategorySection = styled.section`
   }
 `;
 
-const CategorySection: React.FC = (props) => {
-  const [category, setCategory] = useState<string>('+')
-  const [categoryList] = useState<('+'|'-')[]>(['+', '-'])
+type Props = {
+  category: '+' | '-',
+  onChange: (category: '+' | '-') => void
+}
+
+const CategorySection: React.FC<Props> = (props) => {
+  // const [category, setCategory] = useState<string>('+')
+  const category = props.category
+  const [categoryList] = useState<('+' | '-')[]>(['+', '-'])
   // hash 值对应
   const categoryMap = { '-': '支出', '+': '收入' }
   type X = typeof categoryMap
@@ -38,7 +44,9 @@ const CategorySection: React.FC = (props) => {
       <ul>
         {
           categoryList.map(c =>
-            <li key={c}>{categoryMap[c]}</li>
+            <li key={c}
+              onClick={() => { props.onChange(c) }}
+              className={category === c ? 'selected' : ''}>{categoryMap[c]}</li>
           )
         }
       </ul>

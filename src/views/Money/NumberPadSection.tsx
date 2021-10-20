@@ -50,15 +50,21 @@ const _NumberPadSection = styled.section`
   }
 `;
 
-const NumberPadSection: React.FC = (props) => {
-  const [output, _setOutput] = useState('0')
+type Props = {
+  amount: number,
+  onChange: (amount:number)=>void
+}
+
+const NumberPadSection: React.FC<Props> = (props) => {
+  // const [output, props.onChange] = useState('0')
+  const output = props.amount.toString()
   const setOutput = (output:string)=>{
     if(output.length>16){
-      _setOutput(output.slice(0,16))
+      props.onChange(parseFloat(output.slice(0,16)))
     }else if(output.length===0){
-      _setOutput('0')
+      props.onChange(0)
     }else{
-      _setOutput(output)
+      props.onChange(parseFloat(output))
     }
   }
   const onClickButtonWrapper = (e: React.MouseEvent) => {

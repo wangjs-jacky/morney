@@ -32,9 +32,15 @@ const _TagsSection = styled.section`
   }
 `
 
-const TagsSection: React.FC = (props) => {
+// 现在开始接受props中的值，默认只有children属性，可以React.FC<类型>的方式指定。
+type Props = {
+  value: string[],// 指定props的属性有一个selected变量，并且是string[]类型
+  onChange: (selected:string[]) => void
+}
+const TagsSection: React.FC<Props> = (props) => {
   const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行'])
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
+  // const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const selectedTags = props.value
   const onAddTag = () => {
     const tagName = window.prompt("请输入tag")
     if (tagName !== null) {
@@ -45,9 +51,9 @@ const TagsSection: React.FC = (props) => {
     const index = selectedTags.indexOf(tag)
     if (index >= 0) {
       // 如果tag已经存在selectedTags中，那过滤出seleedTags除tag外所有的数据
-      setSelectedTags(selectedTags.filter(t => t !== tag))
+      props.onChange(selectedTags.filter(t => t !== tag))
     } else {
-      setSelectedTags([...selectedTags, tag])
+      props.onChange([...selectedTags, tag])
     }
   }
 

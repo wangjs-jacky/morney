@@ -18,13 +18,17 @@ const _NotesSection = styled.section`
     }
   }
 `;
-
-const NotesSection: React.FC = (props) => {
-  const [notes, setNotes] = useState("")
+type Props = {
+  notes: string,
+  onChange: (notes:string) => void
+}
+const NotesSection: React.FC<Props> = (props) => {
+  // const [notes, setNotes] = useState("") // 需要注掉这一行
+  const notes = props.notes
   const inputRef = useRef<HTMLInputElement>(null)
   const onBlur = () => {
     if (inputRef.current !== null) {
-      setNotes(inputRef.current.value)
+      props.onChange(inputRef.current.value)
     }
   }
 
