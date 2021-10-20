@@ -38,11 +38,9 @@ const CategorySection: React.FC = (props) => {
       <ul>
         {
           categoryList.map(c =>
-            <li >{categoryMap[c]}</li>
+            <li key={c}>{categoryMap[c]}</li>
           )
         }
-
-
       </ul>
     </_CategorySection>
   )

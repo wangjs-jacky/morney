@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-const NumberPadSection = styled.section`
+const _NumberPadSection = styled.section`
   display:flex;
   flex-direction: column;
   > .output{
@@ -49,4 +50,84 @@ const NumberPadSection = styled.section`
   }
 `;
 
-export {NumberPadSection};
+const NumberPadSection: React.FC = (props) => {
+  const [output, _setOutput] = useState('0')
+  const setOutput = (output:string)=>{
+    if(output.length>16){
+      _setOutput(output.slice(0,16))
+    }else if(output.length===0){
+      _setOutput('0')
+    }else{
+      _setOutput(output)
+    }
+  }
+  const onClickButtonWrapper = (e: React.MouseEvent) => {
+    console.log((e.target as HTMLButtonElement).textContent)
+    const text = (e.target as HTMLButtonElement).textContent
+    switch (text) {
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+        if (output === '0') {
+          // 将读取到的值保存到 Input 输入框内
+          setOutput(text)
+        } else {
+          setOutput(output + text)
+        }
+        break
+      case '.':
+        // console.log('点')
+        if(output.indexOf('.')>=0){
+          return 
+        }
+        setOutput(output+'.')
+        break
+      case '删除':
+        // console.log('删除')
+        setOutput(output.slice(0,-1))
+        break
+      case '清空':
+        // console.log('清空')
+        setOutput('')
+        break
+      case 'ok':
+        console.log('ok')
+        break
+      default:
+        break
+    }
+
+  }
+  return (
+    <_NumberPadSection>
+      <div className="output">
+        {output}
+      </div>
+      <div className="pad clearfix" onClick={onClickButtonWrapper}>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>删除</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>清空</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button className="ok">OK</button>
+        <button className="zero">0</button>
+        <button className="dot">.</button>
+      </div>
+    </_NumberPadSection>
+  )
+}
+
+export { NumberPadSection };
