@@ -14,3 +14,14 @@ body{
     font-size: 16px;
     line-height: 1.2;
 }
+
+button{
+  border: none;
+  outline: none;
+}
+
+.oneLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

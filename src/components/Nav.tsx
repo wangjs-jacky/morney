@@ -16,7 +16,6 @@ const Nav = (props: any) => (
                 </NavLink>
             </li>
             <li>
-
                 <NavLink to="/money" activeClassName="selected">
                     <Icon name="shoes"></Icon>记账页
                 </NavLink>

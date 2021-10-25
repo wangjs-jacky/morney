@@ -14,51 +14,48 @@ const MyLayout = styled(Layout)`
 
 type Category = '-' | '+'
 
-function Money() {
+const Money = () => {
   const [selected, setSelected] = useState({
-    tags: [] as string[],
+    tagIds: [] as number[],
     note: '',
     category: '-' as Category,
     amount: 0 // 这个是num类型，而在之前组件中定义的是一个字符
   })
+  type Selected = typeof selected
+  const onChange = (obj: Partial<Selected>) => {
+    setSelected({
+      ...selected,
+      ...obj
+    })
+  }
+
   return (
     <MyLayout>
       <TagsSection
-        value={selected.tags}
+        value={selected.tagIds}
         onChange={(tags) => {
-          setSelected({
-            ...selected,
-            tags
-          }
-          )
+          onChange({ tagIds: tags })
         }}>
       </TagsSection>
       <NotesSection
         notes={selected.note}
         onChange={(note) => {
-          setSelected({
-            ...selected,
-            note
-          })
+          onChange({ note })
         }}>
       </NotesSection>
       <CategorySection
         category={selected.category}
         onChange={(category) => {
-          setSelected({
-            ...selected,
-            category
-          })
+          onChange({ category })
         }}>
       </CategorySection>
       <NumberPadSection
         amount={selected.amount}
         onChange={(amount) => {
-          setSelected({
-            ...selected,
-            amount
-          })
-        }}></NumberPadSection>
+          onChange({ amount })
+        }}>
+
+      </NumberPadSection>
       <Nav />
     </MyLayout>
   );
